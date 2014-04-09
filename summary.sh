@@ -14,6 +14,8 @@ if [ -z $GCVIEWER_JAR ]; then
 fi
 
 for f in `find . -name '*.log'`; do
-    java -jar $GCVIEWER_JAR $f $f-summary.txt
+    if [ ! -f "$f-summary.txt" ]; then
+        java -jar $GCVIEWER_JAR $f $f-summary.txt
+    fi
 done
 
